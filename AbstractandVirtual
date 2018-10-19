@@ -1,0 +1,86 @@
+Good Resource: http://www.interviewsansar.com/
+
+where use of Java Static method is Indispensable(Mandatory)
+
+Main method is starting point of the programme is static, so the JVM can call main method with out creating an object.
+
+what is problem with the JVM that it need only static main () method to start a program?
+JVM looks for main () method in your program to execute as a starting point.
+We know that to call a non-static method () of a class, first we need to create the object of the class and then can call it.
+
+So, to call the method compiler need to create an object of the class if main () method is non-static. But, compiler look first main () method to start the program, only then it can create the object of the class. Hence, it is dead lock like situation.
+
+If main () method is static, only then compiler can call it using class name without creating the object. This is the reason this method is Static.
+
+By the compiler design staring point is Main method if we cannot mention the static then it has to create an object(to create an object it has to go to the Main method first) thats the reason Main method is static
+
+where use of Interface is Indispensable(Mandatory)
+
+
+How to implement two interfaces with same method in C#?
+If we have two interface with same method name then a class need to implement interface explicitly in a program.
+
+We implement the interface explicitly in a class, using interface name e.g. “interfacename.method()”
+
+void ILoanCustomer.GetCostomerInfo()
+
+Also note that when we use explicit interface implementations, the functions are not public in the class.
+
+bullet points: 
+  If we have two interface with same method name then a class need to implement interface explicitly in a program.
+  when we use explicit interface implementations, the functions are not public in the class.
+  When a method is explicitly implemented in a class in C#, it cannot be accessed through a class instance, but only through an interface instance
+  IBankCustomer bc = new Customer();
+  bc.GetCostomerInfo();
+  Using class instance can’t access the method e.g.
+  Customer c = new Customer();
+  c.GetCostomerInfo();
+  
+//Interfaces ILoanCustomer & IBankCustomer
+//have same method name. That will be implemented
+//Explicitely in Customer class
+interface ILoanCustomer
+{
+    void GetCostomerInfo();
+}
+interface IBankCustomer
+{
+   void GetCostomerInfo();    
+}
+ 
+ 
+class Customer : ILoanCustomer, IBankCustomer
+{
+    //Explicit implementation of ILoanCustomer interface
+    void ILoanCustomer.GetCostomerInfo()
+    {
+        Console.WriteLine("Loan Customer ...");
+        
+    }
+    //Explicit IBankCustomer of ILoanCustomer interface
+    void IBankCustomer.GetCostomerInfo()
+    {
+        Console.WriteLine("Bank Customer ...");
+       
+    }
+}
+ 
+//Test
+class Program
+{
+    static void Main(string[] args)
+    {
+        IBankCustomer bc = new Customer();
+        bc.GetCostomerInfo();
+ 
+        ILoanCustomer lc = new Customer();
+        lc.GetCostomerInfo();       
+       
+    }
+}
+
+In C# Abstract class virtual and abstract method both? Why?
+Yes, We can have virtual method in an Abstract class in C#.
+
+This is true that both virtual and abstract method allow derived classes to override and implement it. But, difference is that an abstract method forces derived classes to implement it whereas virtual method is optional.
+If we don’t override an abstract class in derived classes compiler will flash an error. But, if we don’t override and implement virtual method it is ok.
