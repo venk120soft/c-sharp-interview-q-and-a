@@ -1,0 +1,389 @@
+Create Node Class
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace LinkedListTutorial
+{
+    public class Node
+    {
+        //private fields
+        private object _data;
+        private Node _next;
+        //constructor
+        public Node(object data, Node next)
+        {
+            this._data = data;
+            this._next = next;
+        }
+        //public Properties
+        public object Data
+        {
+            get { return this._data; }
+            set { this._data = value; }
+        }
+        public Node Next {
+            get { return this._next;}
+            set { this._next=value;}
+        }
+
+    }
+}
+
+
+Then LinkedList Class
+
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace LinkedListTutorial
+{
+    public class LinkedList1
+    {
+        //private Fields
+        //reference to the first node in the list
+        private Node _head;
+        //How many items are currently in the list
+        private int _count;
+        //constructor
+        //Creates a new linked list
+        public LinkedList1()
+        {
+            this._head = null;
+            this._count = 0;
+        }
+        //Properties
+        //gets a count of objects in the list if the list is empty 
+        public bool Empty { get { return this._count == 0; } }
+        //gets a count of objects in the list
+        public int Count { get { return this._count; } }
+        #region Display elements in List
+        public void printAllNodes()
+        {
+            Node current = _head;
+            while (current != null)
+            {
+                Console.WriteLine(current.Data);
+                current = current.Next;
+            }
+        }
+        #endregion
+
+        #region Add Functionality
+        /// <summary>
+        /// Add an object to the list at the specified index
+        /// </summary>
+        /// <param name="index">index to add object</param>
+        /// <param name="obj">object to add</param>
+        /// <returns>object added to the list</returns>
+        public object AddAt(int index, object obj)
+        {
+            lock (this)
+            {
+                // Checking If the given index is greater than the size of the list then throw an exception
+                if (index > _count || index < 0)
+                    throw new ArgumentOutOfRangeException("Index:" + index);
+                Node current = this._head;
+                if (this.Empty || index == 0)
+                    this._head = new Node(obj, this._head);
+                else
+                {
+                    //this loop must not be while(current.Next!=null)
+                    for (int i = 0; i < index - 1; i++)
+                        current = current.Next;
+                    current.Next = new Node(obj, current.Next);
+                }
+                _count++;   
+            }
+              
+            return obj;
+        }
+        // Adding Without index
+        public object Add(object obj)
+        {
+            return this.AddAt(_count, obj);
+        }
+        public object AddFirst(object data)
+        {
+            return new Node(data, _head);
+        }
+
+        public object AddLast(Object data)
+        {
+            if (_head == null)
+                return new Node(data, null);
+            else
+            {
+                Node current = _head;
+                while (current.Next != null)
+                    current = current.Next;
+                return new Node(data, current.Next);
+            }
+        }
+       
+        #endregion
+        #region Update old data with new data
+        public bool Update(object oldItem, object newItem)
+        {
+            lock (this)
+            {
+                Node currentNode = this._head;
+                while (currentNode != null)
+                {
+                    if (currentNode.Data.ToString().Equals(oldItem.ToString()))
+                    {
+                        currentNode.Data = newItem;
+                        return true;
+                    }
+                    currentNode = currentNode.Next;
+                }
+                return false;
+            }
+        }
+        #endregion
+        #region Remove Functionality
+        public object RemoveAt(int index)
+        {
+            if (index < 0)
+                throw new ArgumentOutOfRangeException("Index: " + index);
+
+            if (this.Empty)
+                return null;
+            if (index >= this._count)
+                index = _count - 1;
+            Node current = this._head;
+            object result = null;
+
+            if (index == 0)
+            {
+                result = current.Data;
+                this._head = current.Next;
+            }
+            else
+            {
+                for(int i=0;i<index-1;i++)
+                    current = current.Next;
+                result = current.Next.Data;
+                current.Next = current.Next.Next;
+            }
+            _count--;
+            return result;
+        }
+
+        #endregion
+
+        public void Reverse(LinkedList1 lList)
+        {
+            if(lList.Empty)
+                return;
+            Node currentNode= lList._head;
+            Node nextNode,prevNode = null;
+            while(currentNode!=null)
+            {
+                nextNode = currentNode.Next;
+                currentNode.Next = prevNode;
+                prevNode = currentNode;
+                currentNode = nextNode;
+            }
+
+            lList._head = prevNode;
+        }
+        public void Clear()
+        {
+            // to clear the list
+            this._head = null;
+            this._count = 0;
+        }
+
+        public int IndexOf(object obj)
+        {
+            Node current = this._head;
+            for (int i = 0; i < this._count; i++)
+            {
+                if (current.Data.Equals(obj))
+                    return i;
+                current = current.Next;
+            }
+            return -1;
+        }
+        public bool Contains(object obj)
+        {
+            return this.IndexOf(obj) > -1;//!=-1 (or) >=0
+        }
+        public object Get(int index)
+        {
+            if (index < 0)
+                throw new ArgumentOutOfRangeException("Index: " + index);
+            if (this.Empty)
+                return null;
+            if (index >= this._count)
+                index = _count - 1;
+            Node current = this._head;
+            for (int i = 0; i < index; i++)
+                current = current.Next;
+
+            return current.Data;
+
+        }
+        public object this[int index]
+        {
+            get { return this.Get(index); }
+        }
+        
+    }
+
+}
+
+In Program.cs
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace LinkedListTutorial
+{
+    class Program
+    {
+        /*//Checking the substring occurances in a string 
+        public static int CountSubstring(string text, string value)
+        {
+            int count = 0, minIndex = text.IndexOf(value, 0);
+            while (minIndex != -1)
+            {
+                minIndex = text.IndexOf(value, minIndex + value.Length);
+                count++;
+            }
+            return count;
+        }
+        //In this way, the head of the linked list will point to the last node of the linked list. Also, each node’s “Next” and “Previous” properties need to be swapped too.
+        public void ReverseLinkedList(LinkedList linkedList)
+        {
+            LinkedListNode start = linkedList.Head;
+            LinkedListNode temp = null;
+            while (start != null)
+            {
+                temp = start.Next;
+                start.Next = start.Previous;
+                start.Previous = temp;
+                if (start.Previous == null)
+                {
+                    linkedList.Head = start;
+                }
+                start = start.Previous;
+            }
+        }
+         * Implement Queue using array
+         * public class Queue {
+  private int[] data;     
+  private int size;       
+  private int front = -1; 
+  private int back = 0;   
+  private int count = 0;
+
+  public Queue() { 
+    size = 10;
+    data = new int[size];
+  }
+  
+  public Queue(int size) {
+    this.size = size;
+    data = new int[size];
+  }       
+  
+  public bool IsEmpty() {
+    return  count == 0;
+  }
+  
+  public bool IsFull() {
+    return count == size;
+  }
+  
+  public void Add(int i){
+    if (IsFull())
+      throw new ApplicationException("Queue full");
+    else {
+      count++;
+      data[back++ % size] = i;
+    }
+  }
+  public int Remove(){
+    if (IsEmpty())
+       throw new ApplicationException("Queue empty");
+    else {
+       count--;
+       return data[++front % size];
+    }
+  }
+  public int Head(){
+    if (IsEmpty()){
+      throw new ApplicationException("Queue empty");
+    }
+    else
+      return data[(front+1) % size];
+  }
+  public static void Main() {
+    try {
+      Queue q1 = new Queue();
+      q1.Add(4);
+      q1.Add(5);
+      Console.WriteLine("The front is now {0}", q1.Head());
+      q1.Add(6);
+      Console.WriteLine("Removing from q1 returns {0}", q1.Remove());
+      Console.WriteLine("Queue 1 has size {0}", q1.size);
+      Console.WriteLine("Queue 1 empty? {0}", q1.IsEmpty());
+      q1.Remove();
+      Console.WriteLine("Throws exception before we get here");
+    }catch(Exception e) {
+        Console.WriteLine(e);
+    }
+  }
+}  
+         */
+        static void Main(string[] args)
+        {
+            LinkedList1 L1 = new LinkedList1();
+            L1.Add("MY Name");
+            L1.Add("is");
+            L1.Add("Venkatesh");
+            L1.Add("I am a");
+            L1.Add("Software Engineer");
+
+            L1.AddAt(0,"Active");            
+            L1.AddAt(1, "In");
+
+            L1.printAllNodes();
+            
+            Console.WriteLine(L1.Update("is", "are"));
+            Console.WriteLine("After Updation");
+            L1.printAllNodes();
+
+            Console.WriteLine(L1.Contains("iS"));
+            Console.WriteLine(L1.Contains("is"));
+            Console.WriteLine(L1.IndexOf("is"));
+            Console.WriteLine(L1.Get(5));
+
+            L1.RemoveAt(6);
+            Console.WriteLine("After romoving  item in the list");
+            L1.printAllNodes();
+            
+            L1.Reverse(L1);
+            Console.WriteLine(L1.Count);
+            Console.WriteLine("reverse List");
+            L1.printAllNodes();
+            
+            L1.Clear();
+            
+            Console.WriteLine(L1.Count);     
+            Console.ReadLine();
+        }
+    }
+}
