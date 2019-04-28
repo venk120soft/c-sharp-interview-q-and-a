@@ -1,0 +1,30 @@
+https://www.infoworld.com/article/3122592/my-two-cents-on-the-yield-keyword-in-c.html
+
+The yield keyword performs custom and stateful iteration and returns each element of a collection one at a time.
+By using the yield return statement, we can avoid creating the temperory element, we can return the value and continue to next line. then agian return that and continue working on it.
+
+static IEnumerable<int> GenerateFibonacciNumbers(int n)
+       {
+           for (int i = 0, j = 0, k = 1; i < n; i++)
+          {
+               yield return j;
+               int temp = j + k;
+               j = k;
+               k = temp;
+           }
+       }
+ foreach (int x in GenerateFibonacciNumbers(10))
+   {
+       Console.WriteLine(x);
+   }
+   0 1 1 2 3 5 8 12
+Points to remember
+When working with the yield keyword, you should keep these points in mind:
+
+You cannot have the yield return statement in a try-catch block though you can have it inside a try-finally block
+You cannot have the yield break statement inside a finally block
+The return type of the method where yield has been used, should be IEnumerable, IEnumerable<T>, IEnumerator, or IEnumerator<T>
+You cannot have a ref or out parameter in your method in which yield has been used
+You cannot use the "yield return" or the "yield break" statements inside anonymous methods
+You cannot use the "yield return" or the "yield break" statements inside "unsafe" methods, i.e., methods that are marked with the "unsafe" keyword to denote an unsafe context
+
