@@ -50,6 +50,8 @@ namespace LinkedListTutorial
         //private Fields
         //reference to the first node in the list
         private Node _head;
+        // mid element
+        private Node _midElement;
         //How many items are currently in the list
         private int _count;
         //constructor
@@ -64,6 +66,8 @@ namespace LinkedListTutorial
         public bool Empty { get { return this._count == 0; } }
         //gets a count of objects in the list
         public int Count { get { return this._count; } }
+        //gets a mid element
+        public Node MidElement { get { return this._midElement; } }
         #region Display elements in List
         public void printAllNodes()
         {
@@ -178,22 +182,89 @@ namespace LinkedListTutorial
         }
 
         #endregion
-
-        public void Reverse(LinkedList1 lList)
+        
+        #region Finding Mid element
+        public Node MidElement1(LinkedList1 lList){
+            Node current = this._head;
+            if(current==null ||lList.Count==1){
+                return current;
+            }
+            for(int i=0;i<this._count/2;i++){
+                current=current.Next;
+            }
+            _midElement=current;
+            return _midElement;
+        }
+        public Node MidElement1(LinkedList1 lList){
+            Node current = this._head;
+            int count=0;
+            if(current==null){
+                return current;
+            }
+            _midElement =this._head;
+            while(current !=null)
+            {
+                // this can be && also.
+                // this will return true for all odd numbers
+                if(count & 1){
+                    _midElement = _midElement.Next;
+                }
+                count=count++;
+                current= current.Next;
+            }
+            return _midElement;
+        }
+        #endregion
+        
+        #region Removing duplicate elements from 
+        /// <summary>
+        /// Algo : Using Hashing Effecient way O(n) for both sorted and unsorted list
+        /// </summary>
+        /// <param name="list"></param>
+        /// <returns></returns>
+        public void RemoveDuplicatesFromList(LinkedList1 list)
         {
-            if(lList.Empty)
+            if (list.Count < 2)
+            {
                 return;
+            }
+            ArrayList tempList = new ArrayList();
+            Node current = this._head;
+            Node prev = null;
+            while (current != null)
+            {
+                if (tempList.Contains(current.Data))
+                {
+                    // We have to delete the element from the linked list
+                    prev.Next = current.Next;
+                    _count--;
+                }
+                else
+                {
+                    // We have to add the element
+                    tempList.Add(current.Data);
+                    prev = current;
+                }
+                current = current.Next;
+            }
+        }
+        #endregion
+        public LinkedList1 Reverse(LinkedList1 lList)
+        {
+            if(lList.Empty || IList.Count==1)
+                return lList;
             Node currentNode= lList._head;
             Node nextNode,prevNode = null;
             while(currentNode!=null)
             {
-                nextNode = currentNode.Next;
-                currentNode.Next = prevNode;
-                prevNode = currentNode;
-                currentNode = nextNode;
+                nextNode = currentNode.Next; // temp variable
+                currentNode.Next = prevNode; // Assigning the previous node to next node
+                prevNode = currentNode; // Assigning the current node to previous which is head now
+                currentNode = nextNode; // Assigning temp variable to the current node
             }
 
             lList._head = prevNode;
+            return IList;
         }
         public void Clear()
         {
