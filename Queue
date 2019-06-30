@@ -1,0 +1,67 @@
+//  Implement Queue using array
+
+public class Queue {
+  private int[] data;     
+  private int size;       
+  private int front = -1; 
+  private int back = 0;   
+  private int count = 0;
+
+  public Queue() { 
+    size = 10;
+    data = new int[size];
+  }
+  
+  public Queue(int size) {
+    this.size = size;
+    data = new int[size];
+  }       
+  
+  public bool IsEmpty() {
+    return  count == 0;
+  }
+  
+  public bool IsFull() {
+    return count == size;
+  }
+  
+  public void Add(int i){
+    if (IsFull())
+      throw new ApplicationException("Queue full");
+    else {
+      count++;
+      data[back++ % size] = i;
+    }
+  }
+  public int Remove(){
+    if (IsEmpty())
+       throw new ApplicationException("Queue empty");
+    else {
+       count--;
+       return data[++front % size];
+    }
+  }
+  public int Head(){
+    if (IsEmpty()){
+      throw new ApplicationException("Queue empty");
+    }
+    else
+      return data[(front+1) % size];
+  }
+  public static void Main() {
+    try {
+      Queue q1 = new Queue();
+      q1.Add(4);
+      q1.Add(5);
+      Console.WriteLine("The front is now {0}", q1.Head());
+      q1.Add(6);
+      Console.WriteLine("Removing from q1 returns {0}", q1.Remove());
+      Console.WriteLine("Queue 1 has size {0}", q1.size);
+      Console.WriteLine("Queue 1 empty? {0}", q1.IsEmpty());
+      q1.Remove();
+      Console.WriteLine("Throws exception before we get here");
+    }catch(Exception e) {
+        Console.WriteLine(e);
+    }
+  }
+}  
