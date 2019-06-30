@@ -304,6 +304,41 @@ namespace StringManipulations
             }
             return count;
         }
+        
+        /// <summary>
+        /// Algo : Anagram string means each char in givenString should be there in second string any where.
+        /// </summary>
+        /// <param name="text1"></param>
+        /// <param name="text2"></param>
+        /// <returns></returns>
+        private bool IsAnagram(string text1, string text2)
+        {
+            
+            if (text1.Length != text2.Length)
+            {
+                return false;
+            }
+            // This will keep track of the chars for any string 
+            int[] resultedArray = new int[256]; // total no of characters
+            for (int i = 0; i < text1.Length; i++)
+            {
+                // i.e resultedArray['a']++ means 97 is the ansci value for the a and on each count it will increase by 1
+                // ex: 'abstract' after looping all elements a is 2 times repeated so at 97 the value is 2 b is 1 c is 1 t is 2 r is 1
+                resultedArray[text1[i]]++;
+                // If the count is 0 intially then on doing this step it should be -1
+                resultedArray[text2[i]]--;
+            }
+            // at the end all values should be 0 otherwise false
+            for (int i = 0; i < resultedArray.Length; i++)
+            {
+                if (resultedArray[i] != 0)
+                {
+                    return false;
+                }
+            }
+            return true;
+        }
+        
         static void Main(string[] args)
         {
             AllStringOperations objProgram = new AllStringOperations();
