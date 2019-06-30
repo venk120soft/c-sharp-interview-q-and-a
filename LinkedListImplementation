@@ -1,4 +1,4 @@
-Create Node Class
+// Create Node Class
 
 using System;
 using System.Collections.Generic;
@@ -34,7 +34,7 @@ namespace LinkedListTutorial
 }
 
 
-Then LinkedList Class
+// Then LinkedList Class
 
 using System;
 using System.Collections;
@@ -249,6 +249,7 @@ namespace LinkedListTutorial
             }
         }
         #endregion
+        #region Reversing the linked list
         public LinkedList1 Reverse(LinkedList1 lList)
         {
             if(lList.Empty || IList.Count==1)
@@ -266,6 +267,26 @@ namespace LinkedListTutorial
             lList._head = prevNode;
             return IList;
         }
+        
+        //In this way, the head of the linked list will point to the last node of the linked list. Also, each node’s “Next” and “Previous” properties need to be swapped too.
+        public void ReverseLinkedList(LinkedList linkedList)
+        {
+            LinkedListNode start = linkedList.Head;
+            LinkedListNode temp = null;
+            while (start != null)
+            {
+                temp = start.Next;
+                start.Next = start.Previous;
+                start.Previous = temp;
+                if (start.Previous == null)
+                {
+                    linkedList.Head = start;
+                }
+                start = start.Previous;
+            }
+        }
+        #endregion
+        
         public void Clear()
         {
             // to clear the list
@@ -312,7 +333,7 @@ namespace LinkedListTutorial
 
 }
 
-In Program.cs
+// In Program.cs
 
 using System;
 using System.Collections.Generic;
@@ -324,35 +345,6 @@ namespace LinkedListTutorial
 {
     class Program
     {
-        /*//Checking the substring occurances in a string 
-        public static int CountSubstring(string text, string value)
-        {
-            int count = 0, minIndex = text.IndexOf(value, 0);
-            while (minIndex != -1)
-            {
-                minIndex = text.IndexOf(value, minIndex + value.Length);
-                count++;
-            }
-            return count;
-        }
-        //In this way, the head of the linked list will point to the last node of the linked list. Also, each node’s “Next” and “Previous” properties need to be swapped too.
-        public void ReverseLinkedList(LinkedList linkedList)
-        {
-            LinkedListNode start = linkedList.Head;
-            LinkedListNode temp = null;
-            while (start != null)
-            {
-                temp = start.Next;
-                start.Next = start.Previous;
-                start.Previous = temp;
-                if (start.Previous == null)
-                {
-                    linkedList.Head = start;
-                }
-                start = start.Previous;
-            }
-        }
-         
         static void Main(string[] args)
         {
             LinkedList1 L1 = new LinkedList1();
