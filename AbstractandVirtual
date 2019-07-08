@@ -1,21 +1,21 @@
 Good Resource: http://www.interviewsansar.com/
 
 where use of Java Static method is Indispensable(Mandatory)
-
 Main method is starting point of the programme is static, so the JVM can call main method with out creating an object.
 
 what is problem with the JVM that it need only static main () method to start a program?
-JVM looks for main () method in your program to execute as a starting point.
+Ans: JVM looks for main () method in your program to execute as a starting point.
 We know that to call a non-static method () of a class, first we need to create the object of the class and then can call it.
+So, to call the method compiler need to create an object of the class if main () method is non-static. 
+But, compiler look first main () method to start the program, only then it can create the object of the class.
+Hence, it is dead lock like situation.
 
-So, to call the method compiler need to create an object of the class if main () method is non-static. But, compiler look first main () method to start the program, only then it can create the object of the class. Hence, it is dead lock like situation.
-
-If main () method is static, only then compiler can call it using class name without creating the object. This is the reason this method is Static.
-
+If main() method is static then only compiler can call it using class name without creating the object. This is the reason this method is Static.
 By the compiler design staring point is Main method if we cannot mention the static then it has to create an object(to create an object it has to go to the Main method first) thats the reason Main method is static
 
 where use of Interface is Indispensable(Mandatory)
-
+Scenario is multiple interface inheritance.C# does not support multiple class inheritance, a class can't inherit more than one class in C#.
+But, a class can inherit multiple interfaces.
 
 How to implement two interfaces with same method in C#?
 If we have two interface with same method name then a class need to implement interface explicitly in a program.
@@ -54,14 +54,12 @@ class Customer : ILoanCustomer, IBankCustomer
     //Explicit implementation of ILoanCustomer interface
     void ILoanCustomer.GetCostomerInfo()
     {
-        Console.WriteLine("Loan Customer ...");
-        
+        Console.WriteLine("Loan Customer ...");        
     }
     //Explicit IBankCustomer of ILoanCustomer interface
     void IBankCustomer.GetCostomerInfo()
     {
         Console.WriteLine("Bank Customer ...");
-       
     }
 }
  
