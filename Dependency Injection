@@ -1,8 +1,9 @@
 Look here : https://stackify.com/dependency-injection-c-sharp/
 For SOLID Principles: https://scotch.io/bar-talk/s-o-l-i-d-the-first-five-principles-of-object-oriented-design
 
-Dependency Injection is a software design pattern which enables the development of loosely coupled code, Through DI, you can decrease tight coupling between software components.
-it is also known as Inversion-of-Control, which makes unit testing convenient.
+Dependency Injection is a software design pattern which enables the development of loosely coupled code.
+Through DI, you can decrease tight coupling between software components. 
+It is also known as Inversion-of-Control, which makes unit testing convenient.
 
 1) Constructor Injection
 2) Setter Injection
@@ -42,11 +43,10 @@ C objC= new C(objA);
 
 }
 
-Isntead we can do It by creatingg the new Interface and implementing them in all the dependent classes then passing thhhat interface in Class C
+Instead, we can move methods into Interface and implementing them in all the dependent classes then pass that interface in Class C.
 
 Public Interface IgetObject{
-
-public void Add();
+  public void Add();
 }
 
 Class A:IgetObject{
@@ -67,4 +67,3 @@ Public static void Main(){
 IgetObject= new A();
 C obj= new C(IgetObject);
 }
-
