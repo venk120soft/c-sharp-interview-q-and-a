@@ -304,6 +304,20 @@ namespace StringManipulations
             }
             return count;
         }
+        
+        // best way for reverse string
+        public static string BestWayReverseString(string givenString)
+        {
+            // only defination it wont take memeory
+            // givenString.toCharArray file the memory just avoiding 
+            char[] tempString = new Char[givenString.Length];
+            for(int i = 0, j = givenString.Length-1 ; i<j ; i++, j--){
+                tempString[i] = givenString[j];
+                tempString[j] = givenString[i];
+            }
+            return tempString.ToString();
+        }
+        
         static void Main(string[] args)
         {
             AllStringOperations objProgram = new AllStringOperations();
