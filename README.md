@@ -1,8 +1,12 @@
 # CsharpInterviewQandA
 C# questions and answers
 
-#Dependency Injection
+# Dependency Injection, LinkedList and Queue
+Reverse LinkedList, CRUD in LinkedList
+Different Type of Dependency Injection 
 
-#Problem Solving on Strings
 
+# Problem Solving on Strings
 like reverse string in multiple ways, count the occurance of char in string, sub string
+
+# Solving Matrix Problems.
