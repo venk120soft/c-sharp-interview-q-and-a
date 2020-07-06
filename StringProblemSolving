@@ -305,6 +305,7 @@ namespace StringManipulations
             return count;
         }
         
+        
         /// <summary>
         /// Algo : Anagram string means each char in givenString should be there in second string any where.
         /// </summary>
@@ -337,6 +338,19 @@ namespace StringManipulations
                 }
             }
             return true;
+        }
+        
+        // best way for reverse string
+        public static string BestWayReverseString(string givenString)
+        {
+            // only defination it wont take memeory
+            // givenString.toCharArray file the memory just avoiding 
+            char[] tempString = new Char[givenString.Length];
+            for(int i = 0, j = givenString.Length-1 ; i<j ; i++, j--){
+                tempString[i] = givenString[j];
+                tempString[j] = givenString[i];
+            }
+            return tempString.ToString();
         }
         
         static void Main(string[] args)

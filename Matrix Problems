@@ -1,0 +1,115 @@
+To Work with matrix problems we should keep this in mind
+
+First take the input matrix 
+ex:
+// Initializing the matrix
+    int[, ] mat = { { 1, 2, 3 }, 
+                    { 4, 5, 6 }, 
+                    { 7, 8, 9 } }; 
+                    
+Make sure to identify all rows and columns with their indexes like below
+
+i represent rows j represent columns
+[i,j]
+i.e {
+     {00 01 02}
+     {10 11 12}
+     {20 21 22}
+    }
+  
+  i.e {
+    {0R0C 0R1C 0R2C}
+    {1R0C 1R1C 1R2C}
+    {2R0C 2R1C 2R2C}
+    }
+
+Then Write the expected output as diagonal
+
+1
+4 2
+7 5 3
+8 6
+9
+
+Then convert them into indexes
+[0, 0]
+[1, 0] [0, 1]
+[2, 0] [1, 1] [0, 2]
+[2, 1] [1, 2]
+[2, 0]
+
+Now, keep in mind that we required below variables to work on matrix problems
+for indexing row, column use i, j
+for looping throw use rowsLangth, columnsLength as m, n
+Total 5 times we have to print, i.e we have to iterate 5 times
+i.e Total no of diagonals we are getting is m + n - 1 => Rows + Columns - 1
+
+Find the equation or formula to change the index values
+7    5    3
+20   11   02
+2R0C 1R1C 0R2C
+
+let's say first element is [20] then 
+i = 2, j=0 then the 2nd element is [11] that will be 
+i = (i-1 = 2-1 = 1) , j = (j+1 = 0+1 = 1) then the 3rd element is [02]
+i = (i-1 = 1-1 = 0) , j = (j+1 = 1+1 = 2)
+
+So, to find the next diagonal element you can use i= i-1 and j= j+1
+
+optional:
+to keep track of up/down directions we can use flag variable which is boolean
+
+Solution:
+Let's we have m rows and n columns with m x n matrix
+
+Then to print first half diagonal elements
+
+for(int k=0 ; k <= m-1 ; k++){
+  int i = k,
+  int j = 0;
+
+  // I should not go down after 0
+  // Every diagonal ends with first row.
+  while( i >= 0){
+    print(matrix[i][j]);
+    i = i-1;
+    j = j+1;
+  }
+}
+
+// For Second Half
+for(int k= 1 ; k <= n-1 ; k++ ){
+
+// This assignment can be decided based on 
+int i = m-1;
+int j = k
+
+  // every diagonal ends with last column
+  while( j <= n-1 ){
+    print(matrix[i][j]);
+    i = i-1;
+    j = j+1;
+    }
+}
+
+O/P: 
+1
+4 2
+7 5 3
+8 6
+9
+
+*****************************************Printing Diagonal in other way *****************************************************
+For the same matrix printing in other way
+3
+2 6
+1 5 9
+4 8
+7
+
+[0, 2]
+[0, 1] [1, 2]
+[0, 0] [1, 1] [2, 2]
+[1, 0] [2, 1]
+[2, 0]
+
