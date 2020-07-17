@@ -89,18 +89,20 @@ so that we can make use of it in any class of same assembly and only derived cla
 ##### 17.is it possible to define method in enum type? 				 Ans: - No
 ##### 18. How to initialize object?
    - in two ways we can initialize object.
-      a) by using object initializer. Ex: Test obj= new Test() { a=1, b=2 }
-      b) by using Constructor. Ex: Test obj= new Test(1,2);
+      a) by using object initializer. 
+	Ex: Test obj= new Test() { a=1, b=2 }
+      b) by using Constructor. 
+      	Ex: Test obj= new Test(1,2);
 ##### 19.What are accessor and mutator methods?
 - a method which is designed to get value from variables of class is called as accessor method.
 - a method which is designed to modify values of variables of class is called as mutator method.
 ##### 20.What is the difference between property and indexer?
-   - property is a member of class or struct which provides a flexible mechanism to read and write from and to the variable of class or struct.
-   - it can be static. 
-   - it cannot be overloaded.
-   - Indexer is also a member of class or struct which is also providing flexible mechanism to read and write from and to the variable of class or struct by using subscript and index.
-   - indexer cannot be static.
-   - always name of indexer must be this, and it can be overloaded
+- property is a member of class or struct which provides a flexible mechanism to read and write from and to the variable of class or struct.
+- it can be static. 
+- it cannot be overloaded.
+- Indexer is also a member of class or struct which is also providing flexible mechanism to read and write from and to the variable of class or struct by using subscript and index.
+- indexer cannot be static.
+- always name of indexer must be this, and it can be overloaded
 ##### 21.Is it possible to define property as static?                                        Ans: -yes
 ##### 22.is it possible to define indexer as static?                                          Ans: -no
 ##### 23.What is the use of base keyword?
@@ -117,8 +119,8 @@ so that we can make use of it in any class of same assembly and only derived cla
 ##### 27.What are different types of constructors available?
   - static constructor: A constructor which is defined as a static member of the class 
   - non static constructor: A constructor defined as the non- static member of the class
-  a) default constructor: A Constructor which doesn’t have the parameters
-  b) parametric constructor: A Constructor with Parameters.
+  	a) default constructor: A Constructor which doesn’t have the parameters
+	b) parametric constructor: A Constructor with Parameters.
 ##### 28.Explain static constructor?
    - A constructor can be defined as a static member.
    - static constructor should not have access modifier
@@ -127,7 +129,7 @@ so that we can make use of it in any class of same assembly and only derived cla
    - it can be used to initialize static variables of class but not non static variables.
    - it is invoked one and only once when the class has been loaded into appDomain by class loader.
 ##### 29.When the static constructor is invoked?
-    - it is invoked one and only once when the class has been loaded into appDomain by class loader.
+   - it is invoked one and only once when the class has been loaded into appDomain by class loader.
 ##### 30.Is it possible to overload static constructor?                                     Ans: -no
 ##### 31.What is the need of copy constructor?
   - it is used to initialize a new object with the help of an existing object when new object has been created.
@@ -146,14 +148,13 @@ so that we can make use of it in any class of same assembly and only derived cla
    - the class can be loaded into the application domain in the following situations 
     a) when the first object of the class has been created
     b) when the static method of the class has been invoked.
-##### 35.How to invoke base class constructor in Derived class constructor?
-    - by using base Keyword.
+##### 35.How to invoke base class constructor in Derived class constructor?             Ans: by using base Keyword.
 ##### 36.What is namespace?
 - It is a logical container which can contain classes, interfaces, enums, delegates, structures
 - with the help of the namespace we can avoid name collisions.
 - A namespace can contain another name space also.
 ##### 37.Can we apply access modifier to namespace?                                     Ans: -No
-##### 38.Is it possible to declare instance variables in namespace?                    Ans: -No
+##### 38.Is it possible to declare instance variables in namespace?                     Ans: -No
 ##### 39.What is alias name for namespace and when is it required?
   - While including too many namespaces in the application with the help of using keyword   then there is a chance of duplicate members.
   - to avoid the conflict, we can assign a temporary name to the duplicate member which is called as alias name for the namespace.
@@ -164,6 +165,7 @@ By Val:
 - No need to be initialized
 - changes won’t reflect
 - Ex:We only Add the changes in Answer paper.
+
 By Ref:
 - it is read and write variable in method. 
 - it must be preceded by ref keyword
@@ -225,7 +227,8 @@ Abstract Class:
 - All Types of members are allowed      
 - Object cannot be created       
 - Access modifier can be applied to the members of the abstract class
-- Constructor and destructor are allowed                                                                                                                              
+- Constructor and destructor are allowed                                                                                                                          
+
 Interface:
 - Fully Unimplemented class
 - Complete Abstraction is possible
@@ -281,7 +284,8 @@ abstract method:
 - Abstract Keyword must be used   
 - It should not have definition in the base class  
 - It must be overridden in the derived classes        
-- It must be with in the abstract class   
+- It must be with in the abstract class
+
 virtual method:
 - virtual keyword must be used
 - It must have the definition in the base class
@@ -306,7 +310,8 @@ virtual method:
 Array:      
 - it is typed collection            
 - fixed size             
-- boxing and unboxing not needed  
+- boxing and unboxing not needed
+
 ArrayList:
 - it is untyped collection
 - size will be increased dynamically.
@@ -314,18 +319,19 @@ ArrayList:
 ##### 95.What is Manifest?
 
 ##### 74.What is difference between List and ArrayList?
-   List                                                           
-ArrayList
+List                                                           
 - it is generic collection   
 - boxing and unboxing is not needed   
 - size will be increased dynamically                                          
+
+ArrayList
 - it is non generic collection
 - Extra burden of boxing and unboxing
 - size will be increased dynamically        
 ##### 75.What is the difference between Hashtable and Sorted List?
 - both the collections are defined as Dictionaries where in elements are stored in the form of (key, value) pair, but in sorted List values are maintained according to keys in ascending order.
 ##### 76.What is assembly?
-     - it is language independent, self-described portable software component.
+- it is language independent, self-described portable software component.
 ##### 77.Is IL language is OO?                                                                      Ans: NO
 ##### 78.What are different types of assemblies?
    - there are three types of assemblies
