@@ -1,17 +1,15 @@
 # CsharpInterviewQandA
-C# questions and answers
-
-# Dependency Injection, LinkedList and Queue
+## Dependency Injection, LinkedList and Queue
 Reverse LinkedList, CRUD in LinkedList
 Different Type of Dependency Injection 
 
 
-# Problem Solving on Strings
+## Problem Solving on Strings
 like reverse string in multiple ways, count the occurance of char in string, sub string
 
-# Solving Matrix Problems.
+## Solving Matrix Problems.
 
-# [SOLID Principles](https://github.com/venk120soft/software-design-principles/blob/master/SOLID%20principles)
+## [SOLID Principles](https://github.com/venk120soft/software-design-principles/blob/master/SOLID%20principles)
 ###### Single Responsibility Principle 
 it states that a class should have one and only reason to change.
 ###### Open Closed Principle Principle 
@@ -33,6 +31,19 @@ In High Level It works in 6 simple steps. For more detailed Explanation [Watch t
 
 5) With the access token the client application will make a request to resource server to access the user data
 6) Up on successfull token request Resource server will respond with request data.
+
+[For below explanation](https://searchapparchitecture.techtarget.com/definition/OAuth)
+// Getting the access code
+1) Client application makes a request to access the resources this will redirect the user to authorize end point
+2) Once the user is authenticated, authorized endpoint returns access code with grant permissions to the client application
+
+// Passing the access code to get the access token
+3) Then client makes request to Authorized server by passing the access code with grant permissions 
+4) Then Authorize server will ask the user to grant access, Up on User approval autherization server will generate the access token and it will send to client
+
+// passing the access token to get the resource access
+5) With the access token the client application will make a request to resource server to access the user data
+6) If token is valid, Resource server will respond with requested data.
 
 
 								OOPS Concepts
