@@ -23,6 +23,18 @@ it states that a client should never be forced to implement an interface that he
 ###### Devpendency Inversion Principle 
 it states that Entities are must depend on abstractions not on concretions. It means high level module must not depend on the low level module, but they should depend on abstractions.
 
+# [OAuth 2.0 Autherization Framework](https://medium.com/@darutk/the-simplest-guide-to-oauth-2-0-8c71bd9a15bb)
+
+In High Level It works in 6 simple steps. For more detailed Explanation [Watch this](https://www.youtube.com/watch?v=996OiexHze0&t)
+1) Client application makes a request to Autherization server to get the access token
+2) Authorization server will ask the user to grant permission
+3) Up on User approval autherization server will generate the access token and it will send to client
+4) Client application will receive the access token
+
+5) With the access token the client application will make a request to resource server to access the user data
+6) Up on successfull token request Resource server will respond with request data.
+
+
 								OOPS Concepts
 
 ##### 1.What is the difference between Object based programming and Object-oriented programming?
