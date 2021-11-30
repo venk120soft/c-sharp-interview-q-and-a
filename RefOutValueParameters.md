@@ -1,3 +1,5 @@
+## Differences between value, Ref, out, params parameters passing in to the methods
+```javascript
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -6,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace MethodParameters
 {
-// Differences between value, Ref, out, params parameters passing in to the methos
+// Differences between value, Ref, out, params parameters passing in to the methods
     class Program
     {
         static void Main(string[] args)
@@ -87,3 +89,4 @@ namespace MethodParameters
         }
     }
 }
+```
