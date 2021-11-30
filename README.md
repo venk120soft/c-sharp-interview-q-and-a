@@ -2,7 +2,7 @@
 ## Dependency Injection, LinkedList and Queue
 Reverse LinkedList, CRUD in LinkedList
 Different Type of Dependency Injection 
-
+[Explanation of DI by Microsoft](https://docs.microsoft.com/en-us/shows/Visual-Studio-Toolbox/Dependency-Injection) | [Source code](https://github.com/miguelcastro67/DI-Webcast)
 
 ## Problem Solving on Strings
 like reverse string in multiple ways, count the occurance of char in string, sub string
