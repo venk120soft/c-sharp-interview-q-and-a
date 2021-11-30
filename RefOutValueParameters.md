@@ -1,4 +1,22 @@
 ## Differences between value, Ref, out, params parameters passing in to the methods
+When we pass Value type parameters (default) the value of the passed parameter won't be changed.
+```javascript
+private int sum(int a, int b, int c){
+    c=2
+    return a+b;
+}
+Console.WriteLine(c);// compiler error
+private int sum(int a, int b, ref int c){
+    c=2;
+    return a+b;
+}
+Console.WriteLine(c);// 2
+private void sum(int a, int b, out sumValue=0){
+    sumValue=a+b;
+}
+this.sum(2,3);
+Console.WriteLine(sumValue);// 5
+```
 ```javascript
 using System;
 using System.Collections.Generic;
