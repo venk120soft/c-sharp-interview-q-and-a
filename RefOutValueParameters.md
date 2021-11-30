@@ -1,5 +1,6 @@
 ## Differences between value, Ref, out, params parameters passing in to the methods
 When we pass Value type parameters (default) the value of the passed parameter won't be changed.
+param keyword used to pass the list of params
 ```javascript
 private int sum(int a, int b, int c){
     c=2
