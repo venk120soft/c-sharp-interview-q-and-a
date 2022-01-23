@@ -1,7 +1,6 @@
-# [OAuth 2.0 Autherization Framework](https://medium.com/@darutk/the-simplest-guide-to-oauth-2-0-8c71bd9a15bb)
-
-References: 
-https://searchapparchitecture.techtarget.com/definition/OAuth
+# OAuth 2.0 Autherization Framework
+- [OAuth 2.0 Autherization Framework](https://medium.com/@darutk/the-simplest-guide-to-oauth-2-0-8c71bd9a15bb)
+- [OAuth](https://searchapparchitecture.techtarget.com/definition/OAuth)
 
 In High Level It works in 6 simple steps. For more detailed Explanation [Watch this](https://www.youtube.com/watch?v=996OiexHze0&t)
 
@@ -10,10 +9,12 @@ In High Level It works in 6 simple steps. For more detailed Explanation [Watch t
 2) Once the user is authenticated, authorized endpoint returns access code with grant permissions to the client application
 
 // Passing the access code to get the access token
+
 3) Then client makes request to Authorized server by passing the access code with grant permissions 
 4) Then Authorize server will ask the user to grant access, Up on User approval autherization server will generate the access token and it will send to client
 
 // passing the access token to get the resource access
+
 5) With the access token the client application will make a request to resource server to access the user data
 6) If token is valid, Resource server will respond with requested data.
 
