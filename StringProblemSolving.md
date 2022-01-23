@@ -1,3 +1,4 @@
+```
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -104,9 +105,8 @@ namespace StringManipulations
 
             Console.WriteLine(firstname.Trim());
             //It removes starting and ending white spaces from string.
-
-
         }
+        
         // My Name is Venkatesh
         //yM emaN si hsetakneV 
         public string PrintWordsInReverse1(string myString)
@@ -377,3 +377,4 @@ namespace StringManipulations
         }
     }
 }
+```
